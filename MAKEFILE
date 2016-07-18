@@ -1,0 +1,15 @@
+CC = gcc
+
+CFLAGS = -Wall -std=c99
+
+all: pst
+
+pst: pst.o
+	$(CC) $(CFLAGS) pst.o -o PST
+
+pst.o: pst.c
+	$(CC) $(CFLAGS) pst.c -c
+
+.PHONY: clean
+clean:
+	rm *.o
