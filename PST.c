@@ -36,17 +36,21 @@ void printTimeAttackMenu(void);
 void printPasswordLengthMenu(void);
 void timeAttackMenu(void);
 void passwordLengthMenu(void);
-void setPasswordAttackRate(unsigned int);
+void printTimeUnitOptions(void);
+void setPasswordAttackRate(void);
 void setPasswordLength(unsigned short int);
 void setNumberOfCharacters(unsigned short int);
-void setTimeUnit(char *);
+void setTimeUnit(void);
 char isValidMainMenuInput(unsigned short int);
 char isValidTimeMenuInput(unsigned short int);
+char isValidTimeUnitInput(unsigned short int);
+char isValidPasswordAttackRate(unsigned int);
 char isValidPasswordLengthMenuInput(unsigned short int);
 float calculatePasswordCrackTime(unsigned long long int);
 unsigned short int getMenuInput(void);
 unsigned short int getTimeAttackMenuInput(void);
 unsigned short int getPasswordLengthMenuInput(void);
+unsigned short int getTimeUnitInput(void);
 unsigned short int roundUp(float);
 unsigned short int secondsToDays(unsigned int);
 unsigned short int secondsToWeeks(unsigned int);
@@ -79,7 +83,7 @@ void printMainMenu(void)
 void printTimeAttackMenu(void)
 {
     printf("\n1. Calculate Time\n2. Set Password Length (%d)\n3. Set Amount of "
-            "Password Characters (%d)\n4. Set Result Unit (%c)\n5. Set Password "
+            "Password Characters (%d)\n4. Set Result Unit (%s)\n5. Set Password "
             "Attack Rate (%d)\n0. Back\n\n", passwordLength, numberOfCharacters,
             timeUnit, passwordAttackRate);
 }
@@ -87,7 +91,7 @@ void printTimeAttackMenu(void)
 void printPasswordLengthMenu(void)
 {
     printf("\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-            " (%d)\n3. Set Time Unit (%c)\n4. Set Password Attack Rate (%d)\n0. "
+            " (%d)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%d)\n0. "
             "Back\n\n", passwordLength, timeUnit, passwordAttackRate);
 }
 
@@ -95,7 +99,8 @@ void initialize(void)
 {
     printf("Password Time Calculator Copyright (C) 2016 Author: Elliott Sobek.\n"
             "This program comes with ABSOLUTELY NO WARRANTY.\nThis is free "
-            "software, and you are welcome to redistribute it under certain conditions");
+            "software, and you are welcome to redistribute it under certain "
+            "conditions.\n");
 }
 
 unsigned short int getMainMenuInput(void)
@@ -116,7 +121,7 @@ char isValidMainMenuInput(unsigned short int input)
     }
 }
 
-char isValidTimeMenuInput(unsigned short int input)
+char isValidTimeAttackMenuInput(unsigned short int input)
 {
     if ((input < 0) || (input > 5)) {
         return FALSE;
@@ -190,9 +195,25 @@ unsigned short int secondsToYears(unsigned int time)
     return time / YEARS;
 }
 
-void setPasswordAttackRate(unsigned int attackRate)
+void setPasswordAttackRate(void)
 {
+    int attackRate;
+    printf("Enter an attack rate (passwords/second): ");
+    scanf("%d", &attackRate);
+    while (FALSE == isValidPasswordAttackRate(attackRate)) {
+        printf("Attack rate must be positive.\n\nEnter an attack rate "
+                "(passwords/second): ");
+        scanf("%d", &attackRate);
+    }
     passwordAttackRate = attackRate;
+}
+
+char isValidPasswordAttackRate(unsigned int rate)
+{
+    if (rate > 0) {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void setPasswordLength(unsigned short int length)
@@ -205,17 +226,65 @@ void setNumberOfCharacters(unsigned short int num)
     numberOfCharacters = num;
 }
 
-void setTimeUnit(char * unit)
+void setTimeUnit(void)
 {
-    timeUnit = unit;
+    unsigned short int input;
+    input = getTimeUnitInput();
+    while (FALSE == isValidTimeUnitInput(input)) {
+        printf("\nNot a menu option\n");
+        input = getTimeUnitInput();
+    }
+    switch (input) {
+    case 1:
+        timeUnit = "Days";
+        break;
+    case 2:
+        timeUnit = "Weeks";
+        break;
+    case 3:
+        timeUnit = "Months";
+        break;
+    case 4:
+        timeUnit = "Years";
+        break;
+    case 0:
+        break;
+    }
+}
+
+unsigned short int getTimeUnitInput(void)
+{
+    printTimeUnitOptions();
+    int input;
+    printf("Enter a menu option: ");
+    scanf("%d", &input);
+    return input;
+}
+
+void printTimeUnitOptions(void)
+{
+    printf("\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
+}
+
+char isValidTimeUnitInput(unsigned short int input)
+{
+    if ((input < 0) || (input > 4)) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
 }
 
 void mainMenu(void)
 {
-    unsigned short int menuOption;
-    menuOption = getMainMenuInput();
+    unsigned short int input;
+    input = getMainMenuInput();
     while (1) {
-        switch (menuOption) {
+        while (FALSE == isValidMainMenuInput(input)) {
+            printf("\nNot a menu option\n");
+            input = getMainMenuInput();
+        }
+        switch (input) {
         case 1:
             timeAttackMenu();
             break;
@@ -224,41 +293,38 @@ void mainMenu(void)
             break;
         case 0:
             exit(EXIT_SUCCESS);
-        default:
-            printf("\nNot a menu option\n");
-            menuOption = getMainMenuInput();
-            break;
         }
     }
 }
 
 void timeAttackMenu(void)
 {
-    unsigned short int menuOption;
-    double result;
-    menuOption = getTimeAttackMenuInput();
-    while (1) {
-        switch (menuOption) {
-        case 1:
-            result = calculatePasswordCrackTime(calculateNumberOfPasswords());
-            printf("This is result: %d %c", roundUp(result), timeUnit);
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 0:
-            mainMenu();
-            break;
-        default:
-            printf("\nNot a menu option\n");
-            menuOption = getTimeAttackMenuInput();
-            break;
-        }
+    unsigned short int input;
+    float result;
+    input = getTimeAttackMenuInput();
+    while (FALSE == isValidTimeAttackMenuInput(input)) {
+        printf("\nNot a menu option\n");
+        input = getTimeAttackMenuInput();
+    }
+    switch (input) {
+    case 1:
+        result = calculatePasswordCrackTime(calculateNumberOfPasswords());
+        printf("This is result: %d %s", roundUp(result), timeUnit);
+        break;
+    case 2:
+        // setPasswordLength
+        break;
+    case 3:
+        // setNumberOfCharacters
+        break;
+    case 4:
+        setTimeUnit();
+        break;
+    case 5:
+        setPasswordAttackRate();
+        break;
+    case 0:
+        break;
     }
 }
 
@@ -269,12 +335,16 @@ void passwordLengthMenu(void)
     while (1) {
         switch (menuOption) {
         case 1:
+            // Calculate
             break;
         case 2:
+            // setNumberOfCharacters
             break;
         case 3:
+            setTimeUnit();
             break;
         case 4:
+            setPasswordAttackRate();
             break;
         case 0:
             mainMenu();
