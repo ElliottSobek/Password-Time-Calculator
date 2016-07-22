@@ -31,8 +31,8 @@
 // # include "LengthMenu.h"
 
 /* Macros */
-#define TRUE 0
-#define FALSE 1
+#define TRUE 1
+#define FALSE 0
 #define DAYS 86400
 #define WEEKS 604800
 #define MONTHS 2678400 // 31 days
@@ -78,7 +78,7 @@ int main(void)
 {
     initialize();
     mainMenu();
-    return 0;
+    return 1;
 }
 
 void printMainMenu(void)
@@ -185,7 +185,7 @@ unsigned short int roundUp(float num)
 void setPasswordAttackRate(void)
 {
     int attackRate;
-    printf("Enter an attack rate (passwords/second): ");
+    printf("\nEnter an attack rate (passwords/second): ");
     scanf("%d", &attackRate);
     while (FALSE == isValidPasswordAttackRate(attackRate)) {
         printf("Attack rate must be positive.\n\nEnter an attack rate "
@@ -206,7 +206,7 @@ unsigned char isValidPasswordAttackRate(unsigned int rate)
 void setPasswordLength(void)
 {
     int length;
-    printf("Enter an password length: ");
+    printf("\nEnter a password length from 1 to 8 inclusive: ");
     scanf("%d", &length);
     while (length < 0 && length > 8) {
         printf("Password length must be between 0 and 8: ");
@@ -252,8 +252,8 @@ unsigned char getNumberOfCharactersInput(void)
 
 void printNumberOfCharactersOptions(void)
 {
-    printf("1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n4. "
-            "Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
+    printf("\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
+            "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 }
 
 unsigned char isValidNumberOfCharactersInput(unsigned char input)
@@ -326,9 +326,11 @@ void mainMenu(void)
         switch (input) {
         case 1:
             timeAttackMenu();
+            input = getMainMenuInput();
             break;
         case 2:
             passwordLengthMenu();
+            input = getMainMenuInput();
             break;
         case 0:
             exit(EXIT_SUCCESS);
@@ -381,7 +383,7 @@ void passwordLengthMenu(void)
         }
         switch (input) {
         case 1:
-            // Calculate
+            // CalculateLength
             break;
         case 2:
             setNumberOfCharacters();
