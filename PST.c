@@ -51,12 +51,14 @@ void setTimeUnit(void);
 void printNumberOfCharactersOptions(void);
 short int getNumberOfCharactersInput(void);
 short int getTimeInput(void);
+short int getPasswordLengthInput(void);
 bool isValidNumberOfCharactersInput(short int);
 bool isValidMainMenuInput(short int);
 bool isValidTimeMenuInput(short int);
 bool isValidTimeUnitInput(short int);
 bool isValidPasswordLengthMenuInput(short int);
-bool isValidPasswordAttackRate(unsigned int);
+bool isValidPasswordLength(short int);
+bool isValidPasswordAttackRate(int);
 short int getTimeAttackMenuInput(void);
 short int getPasswordLengthMenuInput(void);
 short int getTimeUnitInput(void);
@@ -84,15 +86,15 @@ void printTimeAttackMenu(void)
 {
     printf("\n1. Calculate Time\n2. Set Password Length (%hu)\n3. Set Amount of "
             "Password Characters (%hu)\n4. Set Result Unit (%s)\n5. Set Password "
-            "Attack Rate (%u)\n0. Back\n\n", passwordLength, numberOfCharacters,
-            timeUnit, passwordAttackRate);
+            "Attack Rate (%u) per second\n0. Back\n\n", passwordLength, 
+            numberOfCharacters, timeUnit, passwordAttackRate);
 }
 
 void printPasswordLengthMenu(void)
 {
     printf("\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-            " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u)\n0. "
-            "Back\n\n", passwordLength, timeUnit, passwordAttackRate);
+            " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
+            " second\n0. Back\n\n", passwordLength, timeUnit, passwordAttackRate);
 }
 
 void initialize(void)
@@ -117,27 +119,24 @@ bool isValidMainMenuInput(short int input)
 {
     if ((input < 0) || (input > 2)) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
 bool isValidTimeAttackMenuInput(short int input)
 {
     if ((input < 0) || (input > 5)) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
 bool isValidPasswordLengthMenuInput(short int input)
 {
     if ((input < 0) || (input > 4)) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
 unsigned long long int calculateNumberOfPasswords(void)
@@ -151,7 +150,6 @@ float calculatePasswordCrackTime(unsigned long long int numberOfPasswords)
     float timeInSeconds = (float) numberOfPasswords / passwordAttackRate;
     printf("\nThis is timeInSeconds: %f\n", timeInSeconds);
     if (strcmp(timeUnit, "Days") == 0) {
-        printf("\nIn Days\n"); // <-- TMP
         return timeInSeconds / DAYS;
     } else if (strcmp(timeUnit, "Weeks") == 0) {
         return timeInSeconds / WEEKS;
@@ -184,31 +182,49 @@ void setPasswordAttackRate(void)
     printf("\nEnter an attack rate (passwords/second): ");
     scanf("%d", &attackRate);
     while (false == isValidPasswordAttackRate(attackRate)) {
-        printf("Attack rate must be positive.\n\nEnter an attack rate "
+        fflush(stdin);
+        printf("\nAttack rate must be positive integer.\n\nEnter an attack rate "
                 "(passwords/second): ");
         scanf("%d", &attackRate);
     }
     passwordAttackRate = attackRate;
 }
 
-bool isValidPasswordAttackRate(unsigned int rate)
+bool isValidPasswordAttackRate(int rate)
 {
-    if (rate > 0) {
-        return true;
+    if (rate < 1) {
+        return false;
     }
-    return false;
+    return true;
 }
 
 void setPasswordLength(void)
 {
     short int length;
-    printf("\nEnter a password length from 1 to 10 inclusive: ");
-    scanf("%hi", &length);
-    while (length < 0 && length > 10) {
-        printf("Password length must be between 0 and 10: ");
-        scanf("%hi", &length);
+    length = getPasswordLengthInput();
+    while (false == isValidPasswordLength(length)) {
+        fflush(stdin);
+        printf("\nEntered length not between 1 and 10 inclusive\n");
+        length = getPasswordLengthInput();
     }
     passwordLength = length;
+}
+
+short int getPasswordLengthInput(void)
+{
+    printf("\nEnter a password length between 1 to 10 inclusive: ");
+    short int input;
+    scanf("%hi", &input);
+    printf("\nInput in get password: %hi\n", input);
+    return input;
+}
+
+bool isValidPasswordLength(short int input)
+{
+    if ((input < 1) || (input > 10)) {
+        return false;
+    }
+    return true;
 }
 
 void setNumberOfCharacters(void)
@@ -216,6 +232,7 @@ void setNumberOfCharacters(void)
     short int input;
     input = getNumberOfCharactersInput();
     while (false == isValidNumberOfCharactersInput(input)) {
+        fflush(stdin);
         printf("\nNot a menu option\n");
         input = getNumberOfCharactersInput();
     }
@@ -251,9 +268,8 @@ bool isValidNumberOfCharactersInput(short int input)
 {
     if ((input < 0) || (input > 4)) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
 void setTimeUnit(void)
@@ -261,6 +277,7 @@ void setTimeUnit(void)
     short int input;
     input = getTimeUnitInput();
     while (false == isValidTimeUnitInput(input)) {
+        fflush(stdin);
         printf("\nNot a menu option\n");
         input = getTimeUnitInput();
     }
@@ -295,9 +312,8 @@ bool isValidTimeUnitInput(short int input)
 {
     if ((input < 0) || (input > 4)) {
         return false;
-    } else {
-        return true;
     }
+    return true;
 }
 
 void mainMenu(void)
@@ -308,6 +324,7 @@ void mainMenu(void)
         while (false == isValidMainMenuInput(input)) {
             fflush(stdin);
             printf("\nNot a menu option\n");
+            printf("\nInput in main menu: %hi\n", input);
             input = getMainMenuInput();
         }
         switch (input) {
@@ -340,9 +357,7 @@ void timeAttackMenu(void)
         case 1:
             printf("\nThis is the number of passwords: %llu\n", calculateNumberOfPasswords()); // <-- Tmp
             result = calculatePasswordCrackTime(calculateNumberOfPasswords()); // result working?
-            printf("\nThis is the password crack time: %.1f %s\n", result, timeUnit); // <-- Tmp
-            //            printf("\nThis is your result: %f.2 %s (Rounded up)\n", 
-            //                    ceil(result), timeUnit); // ceil(result) Keep as float with one decimal
+            printf("\nThis is the password crack time: %.1f %s\n", result, timeUnit);
             break;
         case 2:
             setPasswordLength();
@@ -365,7 +380,7 @@ void timeAttackMenu(void)
 
 void passwordLengthMenu(void)
 {
-    short int input, backFlag = false;
+    short int input, timeInput, backFlag = false;
     float result;
     while (backFlag == false) {
         input = getPasswordLengthMenuInput();
@@ -376,9 +391,15 @@ void passwordLengthMenu(void)
         }
         switch (input) {
         case 1: // WIP, While loop maybe give back option and error check
-            result = calculatePasswordLength(getTimeInput());
+            timeInput = getTimeInput();
+            while (timeInput < 0) {
+                fflush(stdin);
+                printf("\nTime must be positive.\n");
+                timeInput = getTimeInput();
+            }
+            result = calculatePasswordLength(timeInput);
             printf("\nThis is the minimum password length for the time and "
-                    "attack rate given: %f (Rounded up)\n", result); // %hu original
+                    "attack rate given: %.1f (Rounded up)\n", ceil(result));
             break;
         case 2:
             setNumberOfCharacters();
