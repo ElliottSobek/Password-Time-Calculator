@@ -25,15 +25,13 @@
 #include "pst.h"
 
 /* Functions */
-int main(void)
-{
+int main(void) {
 	initialize();
 	mainMenu();
 	return 1;
 }
 
-void initialize(void)
-{
+void initialize(void) {
 	printf("Password Time Calculator Copyright (C) 2016 Author: Elliott Sobek.\n"
 		   "This program comes with ABSOLUTELY NO WARRANTY.\nThis is free "
 		   "software, and you are welcome to redistribute it under certain "

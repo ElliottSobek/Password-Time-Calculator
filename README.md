@@ -2,7 +2,8 @@
 
 ## About
 
-PST (About)
+PST is a personal program that can increase an individuals knowledge about the theoretical limits of a secure password given a set of conditions.
+PST will potentially give insight into how weak certain passwords can be and vise ver se.
 
 ## Details
 
@@ -14,10 +15,10 @@ PST uses a text based menu in order to select options and navigate the program.
 
 2. PST determines a minimun password lenght given an amount of time.
 
-Both functions have a modifiable feild of password attack rate.
+Both functions have a modifiable field of password attack rate.
 
 ## Contribution
 
 Anyone can contribute and work on any available issues.
 
-The format used is K&R using the C coding standard. After, simply make a pull request and have patience.
+Keep the same format as is used. After, simply make a pull request and have patience.

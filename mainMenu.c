@@ -18,12 +18,11 @@
 #include <stdbool.h>
 #include "pst.h"
 
-void mainMenu(void)
-{
+void mainMenu(void) {
 	short int input;
 	input = getMainMenuInput();
 	while (1) {
-		while (false == isValidMainMenuInput(input)) {
+		while (false == isValidBounds(input, 0, 2)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
 			input = getMainMenuInput();
@@ -43,20 +42,11 @@ void mainMenu(void)
 	}
 }
 
-bool isValidMainMenuInput(short int input)
-{
-	if ((input < 0) || (input > 2)) {
-		return false;
-	}
-	return true;
-}
-
-short int getMainMenuInput(void)
-{
+short int getMainMenuInput(void) {
 	printf("\n1. Calculate Time Until Successful brute force attack\n2. "
 		   "Calculate Password Length\n0. Quit\n\n");
 	short int input;
 	printf("Enter a menu option: ");
-	scanf_s("%hi", &input);
+	scanf("%hi", &input);
 	return input;
 }

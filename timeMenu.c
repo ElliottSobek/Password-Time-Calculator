@@ -16,24 +16,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "pst.h"
 
-void timeAttackMenu(void)
-{
+void timeAttackMenu(void) {
 	short int input, backFlag = false;
 	double result;
 	while (backFlag == false) {
-		//input = getTimeAttackMenuInput();
 		input = getAMenuInput(getTimeAttackMenu());
-		while (false == isValidMenuInput(input, 0, 5)) { // orig: isValidTimeAttackMenuInput(input)
+		while (false == isValidBounds(input, 0, 5)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
-			//input = getTimeAttackMenuInput();
 			input = getAMenuInput(getTimeAttackMenu());
 		}
 		switch (input) {
 			case 1:
-				printf("\nThis is the number of passwords: %f\n", calculateNumberOfPasswords());
 				result = calculatePasswordCrackTime(calculateNumberOfPasswords());
 				printf("\nThis is the password crack time: %.1f %s\n", result, timeUnit);
 				break;
@@ -56,40 +53,17 @@ void timeAttackMenu(void)
 	}
 }
 
-const char * getTimeAttackMenu(void)
-{
-	char * menu = "";
-	/*printf("\n1. Calculate Time\n2. Set Password Length (%hu)\n3. Set Amount of "
-		   "Password Characters (%hu)\n4. Set Result Unit (%s)\n5. Set Password "
-		   "Attack Rate (%u) per second\n0. Back\n\n", passwordLength,
-		   numberOfCharacters, timeUnit, passwordAttackRate);*/
-	sprintf_s(menu, "\n1. Calculate Time\n2. Set Password Length (%hu)\n3. Set Amount of "
-			"Password Characters (%hu)\n4. Set Result Unit (%s)\n5. Set Password "
-			"Attack Rate (%u) per second\n0. Back\n\n", passwordLength,
-			numberOfCharacters, timeUnit, passwordAttackRate);
-	return menu;
+char * const getTimeAttackMenu(void) {
+	char * const transferString = malloc(256 * sizeof(char));
+	snprintf(transferString, 512, "\n1. Calculate Time\n2. Set Password Length (%hu)"
+			 "\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
+			 "\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
+			 passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
+	return transferString;
 }
 
-//bool isValidTimeAttackMenuInput(short int input)
-//{
-//	if ((input < 0) || (input > 5)) {
-//		return false;
-//	}
-//	return true;
-//}
-
-//short int getTimeAttackMenuInput(void)
-//{
-//	printTimeAttackMenu();
-//	short int input;
-//	printf("Enter a menu option: ");
-//	scanf_s("%hi", &input);
-//	return input;
-//}
-
 /* Return units: seconds */
-double calculatePasswordCrackTime(double numberOfPasswords)
-{
+double calculatePasswordCrackTime(double numberOfPasswords) {
 	double timeInSeconds = (double) numberOfPasswords / passwordAttackRate;
 	printf("\nThis is timeInSeconds: %f\n", timeInSeconds);
 	if (strcmp(timeUnit, "Days") == 0) {

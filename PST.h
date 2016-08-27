@@ -38,24 +38,17 @@ void initialize(void);
 
 /* Main Menu prototypes */
 void mainMenu(void);
-bool isValidMainMenuInput(short int);
 short int getMainMenuInput(void);
 
 /* Time Menu prototypes */
 void timeAttackMenu(void);
-//void printTimeAttackMenu(void);
-char * getTimeAttackMenu(void);
-//bool isValidTimeAttackMenuInput(short int);
-//short int getTimeAttackMenuInput(void);
+char * const getTimeAttackMenu(void);
 double calculatePasswordCrackTime(double);
 
 /* Length Menu prototypes */
 void passwordLengthMenu(void);
-//void printPasswordLengthMenu(void);
-char * getPasswordLengthMenu(void);
-//bool isValidPasswordLengthMenuInput(short int);
+char * const getPasswordLengthMenu(void);
 short int getTimeInput(void);
-//short int getPasswordLengthMenuInput(void);
 double calculatePasswordLength(short int);
 
 /* Support prototypes */
@@ -64,15 +57,9 @@ void setTimeUnit(void);
 void setPasswordLength(void);
 void setPasswordAttackRate(void);
 void setNumberOfCharacters(void);
-char * getNumberOfCharactersMenu(void);
-char * getTimeMenu(void);
-bool isValidMenuInput(short int, short int, short int);
-//bool isValidTimeUnitInput(short int);
-bool isValidPasswordLength(short int);
-//bool isValidNumberOfCharactersInput(short int);
-bool isValidPasswordAttackRate(int);
-short int getAMenuInput(char *);
-//short int getTimeUnitInput(void);
+const char * getNumberOfCharactersMenu(void);
+const char * getTimeMenu(void);
+bool isValidBounds(int, short int, unsigned int);
+short int getAMenuInput(const char *);
 short int getPasswordLengthInput(void);
-//short int getNumberOfCharactersInput(void);
 double calculateNumberOfPasswords(void);

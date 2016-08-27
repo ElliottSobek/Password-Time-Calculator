@@ -17,24 +17,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "pst.h"
 
-void passwordLengthMenu(void)
-{
+void passwordLengthMenu(void) {
 	short int input, timeInput, backFlag = false;
 	double result;
 	while (backFlag == false) {
-		//input = getPasswordLengthMenuInput();
 		input = getAMenuInput(getPasswordLengthMenu());
-		while (false == isValidMenuInput(input, 0, 4)) { // orig: isValidPasswordLengthMenuInput(input)
+		while (false == isValidBounds(input, 0, 4)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
-			//input = getPasswordLengthMenuInput();
 			input = getAMenuInput(getPasswordLengthMenu());
 		}
 		switch (input) {
-			case 1: // WIP, While loop maybe give back option and error check
-					// Can pro extract this as a funtion
+			case 1:
 				timeInput = getTimeInput();
 				while (timeInput < 0) {
 					purgeBuffer();
@@ -61,45 +58,22 @@ void passwordLengthMenu(void)
 	}
 }
 
-const char * getPasswordLengthMenu(void)
-{
-	char * menu = "";
-	/*printf("\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-		   " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
-		   " second\n0. Back\n\n", passwordLength, timeUnit, passwordAttackRate);*/
-	sprintf_s(menu, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-			" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
-			" second\n0. Back\n\n", passwordLength, timeUnit, passwordAttackRate);
+char * const getPasswordLengthMenu(void) {
+	char * const menu = malloc(256 * sizeof(char));
+	snprintf(menu, 256, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
+			 " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
+			 " second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
 
-//bool isValidPasswordLengthMenuInput(short int input)
-//{
-//	if ((input < 0) || (input > 4)) {
-//		return false;
-//	}
-//	return true;
-//}
-
-short int getTimeInput(void)
-{
+short int getTimeInput(void) {
 	short int input;
 	printf("\nEnter an amount of time in %s: ", timeUnit);
-	scanf_s("%hi", &input);
+	scanf("%hi", &input);
 	return input;
 }
 
-//short int getPasswordLengthMenuInput(void)
-//{
-//	printPasswordLengthMenu();
-//	short int input;
-//	printf("Enter a menu option: ");
-//	scanf_s("%hi", &input);
-//	return input;
-//}
-
-double calculatePasswordLength(short int time)
-{
+double calculatePasswordLength(short int time) {
 	unsigned short int timeInSeconds;
 	if (strcmp(timeUnit, "Days") == 0) {
 		timeInSeconds = time * DAYS;
