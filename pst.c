@@ -32,6 +32,10 @@ int main(void) {
 }
 
 void initialize(void) {
+	passwordAttackRate = 1000000000;
+	passwordLength = 8;
+	numberOfCharacters = 62;
+	timeUnit = "Days";
 	printf("Password Time Calculator Copyright (C) 2016 Author: Elliott Sobek.\n"
 		   "This program comes with ABSOLUTELY NO WARRANTY.\nThis is free "
 		   "software, and you are welcome to redistribute it under certain "

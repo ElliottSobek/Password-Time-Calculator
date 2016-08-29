@@ -13,10 +13,11 @@
  * GNU General Public License for more details.
  */
 
- /* Guard */
-#pragma once
-
 #include <stdbool.h>
+
+ /* Guard */
+#ifndef PST_H
+#define PST_H
 
 /* Macros */
 #define DAYS 86400
@@ -24,11 +25,11 @@
 #define MONTHS 2678400 // 31 days
 #define YEARS 31536000 // 365 days
 
-/* Globals */
-__declspec(selectany) unsigned int passwordAttackRate = 1000000000; // Per second
-__declspec(selectany) unsigned short int passwordLength = 8;
-__declspec(selectany) unsigned short int numberOfCharacters = 62; // Digits + Upper & Lower case
-__declspec(selectany) char * timeUnit = "Days";
+ /* Globals */
+unsigned int passwordAttackRate;
+unsigned short int passwordLength;
+unsigned short int numberOfCharacters;
+char * timeUnit;
 
 // PROTOTYPES //
 
@@ -63,3 +64,4 @@ bool isValidBounds(int, short int, unsigned int);
 short int getAMenuInput(const char *);
 short int getPasswordLengthInput(void);
 double calculateNumberOfPasswords(void);
+#endif // !PST_H
