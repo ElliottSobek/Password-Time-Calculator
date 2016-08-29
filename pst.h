@@ -60,7 +60,7 @@ void setPasswordAttackRate(void);
 void setNumberOfCharacters(void);
 const char * getNumberOfCharactersMenu(void);
 const char * getTimeMenu(void);
-bool isValidBounds(int, short int, unsigned int);
+bool isValidBounds(int, short int, int);
 short int getAMenuInput(const char *);
 short int getPasswordLengthInput(void);
 double calculateNumberOfPasswords(void);

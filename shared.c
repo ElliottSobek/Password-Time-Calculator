@@ -13,6 +13,10 @@
  * GNU General Public License for more details.
  */
 
+ #if _WIN32
+ #define _CRT_SECURE_NO_WARNINGS
+ #endif
+ 
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
@@ -103,7 +107,7 @@ void setNumberOfCharacters(void) {
 	}
 }
 
-bool isValidBounds(int input, short int lowerBound, unsigned int upperBound) {
+bool isValidBounds(int input, short int lowerBound, int upperBound) {
 	if ((input < lowerBound) || (input > upperBound)) {
 		return false;
 	}

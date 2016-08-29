@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Wall -std=c11
 
-all: pst clean
+all: pst
 
 pst: pst.o mainMenu.o timeMenu.o lengthMenu.o shared.o
 	$(CC) $(CFLAGS) pst.o mainMenu.o timeMenu.o lengthMenu.o shared.o -o PST -l m
