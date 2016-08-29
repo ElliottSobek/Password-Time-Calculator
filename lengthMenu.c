@@ -63,8 +63,8 @@ void passwordLengthMenu(void) {
 }
 
 char * const getPasswordLengthMenu(void) {
-	char * const menu = malloc(256 * sizeof(char));
-	snprintf(menu, 256, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
+	char * const menu = malloc(170 * sizeof(char));
+	snprintf(menu, 170, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
 			 " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
 			 " second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;

@@ -54,8 +54,8 @@ void timeAttackMenu(void) {
 }
 
 char * const getTimeAttackMenu(void) {
-	char * const transferString = malloc(256 * sizeof(char));
-	snprintf(transferString, 512, "\n1. Calculate Time\n2. Set Password Length (%hu)"
+	char * const transferString = malloc(190 * sizeof(char));
+	snprintf(transferString, 190, "\n1. Calculate Time\n2. Set Password Length (%hu)"
 			 "\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
 			 "\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
 			 passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
