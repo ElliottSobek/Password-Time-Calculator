@@ -4,11 +4,11 @@ CFLAGS = -Wall -std=c11
 
 all: pst clean
 
-pst: PST.o mainMenu.o timeMenu.o lengthMenu.o shared.o
+pst: pst.o mainMenu.o timeMenu.o lengthMenu.o shared.o
 	$(CC) $(CFLAGS) pst.o mainMenu.o timeMenu.o lengthMenu.o shared.o -o PST -l m
 
-PST.o: PST.c
-	$(CC) $(CFLAGS) PST.c -c
+pst.o: pst.c
+	$(CC) $(CFLAGS) pst.c -c
 
 mainMenu.o: mainMenu.c
 	$(CC) $(CFLAGS) mainMenu.c -c
