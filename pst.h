@@ -43,12 +43,12 @@ short int getMainMenuInput(void);
 
 /* Time Menu prototypes */
 void timeAttackMenu(void);
-char * const getTimeAttackMenu(void);
+char *  getTimeAttackMenu(void);
 double calculatePasswordCrackTime(double);
 
 /* Length Menu prototypes */
 void passwordLengthMenu(void);
-char * const getPasswordLengthMenu(void);
+char *  getPasswordLengthMenu(void);
 short int getTimeInput(void);
 double calculatePasswordLength(short int);
 
@@ -58,10 +58,10 @@ void setTimeUnit(void);
 void setPasswordLength(void);
 void setPasswordAttackRate(void);
 void setNumberOfCharacters(void);
-const char * getNumberOfCharactersMenu(void);
-const char * getTimeMenu(void);
+ char * getNumberOfCharactersMenu(void);
+ char * getTimeMenu(void);
 bool isValidBounds(int, short int, int);
-short int getAMenuInput(const char *);
+short int getAMenuInput( char *);
 short int getPasswordLengthInput(void);
 double calculateNumberOfPasswords(void);
 #endif // !PST_H

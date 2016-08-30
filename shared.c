@@ -116,7 +116,7 @@ bool isValidBounds(int input, short int lowerBound, int upperBound) {
 	return true;
 }
 
-short int getAMenuInput(const char * message) {
+short int getAMenuInput(char * message) {
 	printf("%s", message);
 	free(message);
 	short int input;
@@ -136,15 +136,15 @@ double calculateNumberOfPasswords(void) {
 	return pow(numberOfCharacters, passwordLength);
 }
 
-const char * getNumberOfCharactersMenu(void) {
-	const char * menu = malloc(113 * sizeof(char));
+char * getNumberOfCharactersMenu(void) {
+	char * menu = malloc(113 * sizeof(char));
 	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
 		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
 }
 
-const char * getTimeMenu(void) {
-	const char * menu = malloc(48 * sizeof(char));
+char * getTimeMenu(void) {
+	char * menu = malloc(48 * sizeof(char));
 	strcpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
 	return menu;
 }
