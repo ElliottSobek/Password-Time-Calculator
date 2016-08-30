@@ -17,8 +17,10 @@
  #define _CRT_SECURE_NO_WARNINGS
  #endif
  
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #include "pst.h"
 
@@ -116,6 +118,7 @@ bool isValidBounds(int input, short int lowerBound, int upperBound) {
 
 short int getAMenuInput(const char * message) {
 	printf("%s", message);
+	free(message);
 	short int input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);
@@ -134,12 +137,14 @@ double calculateNumberOfPasswords(void) {
 }
 
 const char * getNumberOfCharactersMenu(void) {
-	const char * menu = "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n";
+	const char * menu = malloc(113 * sizeof(char));
+	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
+		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
 }
 
 const char * getTimeMenu(void) {
-	const char * menu = "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n";
+	const char * menu = malloc(48 * sizeof(char));
+	strcpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
 	return menu;
 }
