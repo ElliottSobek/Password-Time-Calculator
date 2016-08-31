@@ -109,6 +109,13 @@ void setNumberOfCharacters(void) {
 	}
 }
 
+void checkMalloc(char * charPointer) {
+	if (charPointer == NULL) {
+		printf("\nError allocating memory.\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
 bool isValidBounds(int input, short int lowerBound, int upperBound) {
 	if ((input < lowerBound) || (input > upperBound)) {
 		return false;
@@ -138,6 +145,7 @@ double calculateNumberOfPasswords(void) {
 
 char * getNumberOfCharactersMenu(void) {
 	char * menu = malloc(113 * sizeof(char));
+	checkMalloc(menu);
 	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
 		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
@@ -145,6 +153,7 @@ char * getNumberOfCharactersMenu(void) {
 
 char * getTimeMenu(void) {
 	char * menu = malloc(48 * sizeof(char));
+	checkMalloc(menu);
 	strcpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
 	return menu;
 }
