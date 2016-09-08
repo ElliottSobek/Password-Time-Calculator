@@ -1,23 +1,24 @@
 /*
- * Password Time Calculator
- * Copyright (C) 2016  Author: Elliott Sobek
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- */
+* Password Time Calculator
+* Copyright (C) 2016  Author: Elliott Sobek
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*/
 
- #if _WIN32
- #define _CRT_SECURE_NO_WARNINGS
- #endif
- 
+#if _WIN32
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <math.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -109,9 +110,17 @@ void setNumberOfCharacters(void) {
 	}
 }
 
+void waitFor(unsigned int secs) {
+	time_t newTime = time(0) + secs;
+	while (time(0) < newTime) {
+		;
+	}
+}
+
 void checkMalloc(char * charPointer) {
 	if (charPointer == NULL) {
 		printf("\nError allocating memory.\n");
+		waitFor(5);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -147,7 +156,7 @@ char * getNumberOfCharactersMenu(void) {
 	char * menu = malloc(113 * sizeof(char));
 	checkMalloc(menu);
 	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
+		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
 }
 
