@@ -30,7 +30,7 @@ void purgeBuffer(void) {
 }
 
 void setTimeUnit(void) {
-	short int input;
+	short input;
 	input = getAMenuInput(getTimeMenu());
 	while (false == isValidBounds(input, 0, 4)) {
 		purgeBuffer();
@@ -56,7 +56,7 @@ void setTimeUnit(void) {
 }
 
 void setPasswordLength(void) {
-	short int length;
+	short length;
 	length = getPasswordLengthInput();
 	while (false == isValidBounds(length, 0, 32)) {
 		purgeBuffer();
@@ -69,7 +69,7 @@ void setPasswordLength(void) {
 }
 
 void setPasswordAttackRate(void) {
-	long int attackRate;
+	long attackRate;
 	printf("\nEnter an attack rate between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
 	scanf("%li", &attackRate);
 	while (false == isValidBounds(attackRate, 0, 1000000000)) {
@@ -83,7 +83,7 @@ void setPasswordAttackRate(void) {
 }
 
 void setNumberOfCharacters(void) {
-	short int input;
+	short input;
 	input = getAMenuInput(getNumberOfCharactersMenu());
 	while (false == isValidBounds(input, 0, 4)) {
 		purgeBuffer();
@@ -108,23 +108,23 @@ void setNumberOfCharacters(void) {
 	}
 }
 
-bool isValidBounds(int input, short int lowerBound, int upperBound) {
+bool isValidBounds(int input, short lowerBound, int upperBound) {
 	if ((input < lowerBound) || (input > upperBound))
 		return false;
 	return true;
 }
 
-short int getAMenuInput(char * message) {
+short getAMenuInput(char *message) {
 	printf("%s", message);
-	short int input;
+	short input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);
 	return input;
 }
 
-short int getPasswordLengthInput(void) {
+short getPasswordLengthInput(void) {
 	printf("\nEnter a password length between 1 to 32 inclusive. 0 to go back: ");
-	short int input;
+	short input;
 	scanf("%hi", &input);
 	return input;
 }
@@ -133,14 +133,14 @@ double calculateNumberOfPasswords(void) {
 	return pow(numberOfCharacters, passwordLength);
 }
 
-char * getNumberOfCharactersMenu(void) {
+char *getNumberOfCharactersMenu(void) {
 	char menu[112];
 	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
 		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
 }
 
-char * getTimeMenu(void) {
+char *getTimeMenu(void) {
 	char menu[47];
 	strcpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
 	return menu;

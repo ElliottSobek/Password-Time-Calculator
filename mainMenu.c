@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
- 
+
 #if _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 #endif
@@ -23,7 +23,7 @@
 #include "pst.h"
 
 void mainMenu(void) {
-	short int input;
+	short input;
 	input = getMainMenuInput();
 	while (1) {
 		while (false == isValidBounds(input, 0, 2)) {
@@ -46,10 +46,10 @@ void mainMenu(void) {
 	}
 }
 
-short int getMainMenuInput(void) {
+short getMainMenuInput(void) {
 	printf("\n1. Calculate Time Until Successful brute force attack\n2. "
 		   "Calculate Password Length\n0. Quit\n\n");
-	short int input;
+	short input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);
 	return input;

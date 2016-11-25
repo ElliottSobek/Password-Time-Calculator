@@ -20,7 +20,7 @@
 #include "pst.h"
 
 void timeAttackMenu(void) {
-	short int input;
+	short input;
 	bool backFlag = false;
 	double result;
 	while (backFlag == false) {
@@ -54,8 +54,8 @@ void timeAttackMenu(void) {
 	}
 }
 
-char * getTimeAttackMenu(void) {
-	char * menu = "";
+char *getTimeAttackMenu(void) {
+	char *menu = "";
 	sprintf(menu, "\n1. Calculate Time\n2. Set Password Length (%hu)"
 			 "\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
 			 "\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
@@ -65,7 +65,7 @@ char * getTimeAttackMenu(void) {
 
 /* Return units: seconds */
 double calculatePasswordCrackTime(double numberOfPasswords) {
-	double timeInSeconds = (double) numberOfPasswords / passwordAttackRate;
+	double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
 	if (strcmp(timeUnit, "Days") == 0)
 		return timeInSeconds / DAYS;
 	else if (strcmp(timeUnit, "Weeks") == 0)

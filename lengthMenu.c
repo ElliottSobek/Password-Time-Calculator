@@ -25,7 +25,7 @@
 #include "pst.h"
 
 void passwordLengthMenu(void) {
-	short int input, timeInput;
+	short input, timeInput;
 	bool backFlag = false;
 	double result;
 	while (backFlag == false) {
@@ -63,7 +63,7 @@ void passwordLengthMenu(void) {
 	}
 }
 
-char * getPasswordLengthMenu(void) {
+char *getPasswordLengthMenu(void) {
 	char *menu = "";
 	sprintf(menu, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
 			 " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
@@ -71,15 +71,15 @@ char * getPasswordLengthMenu(void) {
 	return menu;
 }
 
-short int getTimeInput(void) {
-	short int input;
+short getTimeInput(void) {
+	short input;
 	printf("\nEnter an amount of time in %s: ", timeUnit);
 	scanf("%hi", &input);
 	return input;
 }
 
 double calculatePasswordLength(short int time) {
-	unsigned short int timeInSeconds;
+	unsigned short timeInSeconds;
 	if (strcmp(timeUnit, "Days") == 0)
 		timeInSeconds = time * DAYS;
 	else if (strcmp(timeUnit, "Weeks") == 0)
@@ -90,5 +90,5 @@ double calculatePasswordLength(short int time) {
 		timeInSeconds = time * YEARS;
 	double numberOfPasswords;
 	numberOfPasswords = timeInSeconds * passwordAttackRate;
-	return (double) log(numberOfPasswords) / log(numberOfCharacters);
+	return (double) (log(numberOfPasswords) / log(numberOfCharacters));
 }
