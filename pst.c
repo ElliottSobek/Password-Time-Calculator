@@ -20,16 +20,8 @@
   * 'Space' is the 33rd character after the ?
   */
 
-  /* Headers */
 #include <stdio.h>
 #include "pst.h"
-
-/* Functions */
-int main(void) {
-	initialize();
-	mainMenu();
-	return 1;
-}
 
 void initialize(void) {
 	passwordAttackRate = 1000000000;
@@ -40,4 +32,10 @@ void initialize(void) {
 		   "This program comes with ABSOLUTELY NO WARRANTY.\nThis is free "
 		   "software, and you are welcome to redistribute it under certain "
 		   "conditions.\n");
+}
+
+int main(void) {
+    initialize();
+    mainMenu();
+    return 1;
 }
