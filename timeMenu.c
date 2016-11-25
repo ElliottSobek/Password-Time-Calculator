@@ -31,25 +31,25 @@ void timeAttackMenu(void) {
 			input = getAMenuInput(getTimeAttackMenu());
 		}
 		switch (input) {
-			case 1:
-				result = calculatePasswordCrackTime(calculateNumberOfPasswords());
-				printf("\nThis is the password crack time: %.1f %s\n", result, timeUnit);
-				break;
-			case 2:
-				setPasswordLength();
-				break;
-			case 3:
-				setNumberOfCharacters();
-				break;
-			case 4:
-				setTimeUnit();
-				break;
-			case 5:
-				setPasswordAttackRate();
-				break;
-			case 0:
-				backFlag = true;
-				break;
+		case 1:
+			result = calculatePasswordCrackTime(calculateNumberOfPasswords());
+			printf("\nThis is the password crack time: %.1f %s\n", result, timeUnit);
+			break;
+		case 2:
+			setPasswordLength();
+			break;
+		case 3:
+			setNumberOfCharacters();
+			break;
+		case 4:
+			setTimeUnit();
+			break;
+		case 5:
+			setPasswordAttackRate();
+			break;
+		case 0:
+			backFlag = true;
+			break;
 		}
 	}
 }
@@ -57,9 +57,9 @@ void timeAttackMenu(void) {
 char *getTimeAttackMenu(void) {
 	char *menu = "";
 	sprintf(menu, "\n1. Calculate Time\n2. Set Password Length (%hu)"
-			 "\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
-			 "\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
-			 passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
+		 "\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
+		 "\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
+		 passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
 

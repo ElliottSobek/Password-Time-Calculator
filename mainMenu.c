@@ -32,23 +32,23 @@ void mainMenu(void) {
 			input = getMainMenuInput();
 		}
 		switch (input) {
-			case 1:
-				timeAttackMenu();
-				input = getMainMenuInput();
-				break;
-			case 2:
-				passwordLengthMenu();
-				input = getMainMenuInput();
-				break;
-			case 0:
-				exit(EXIT_SUCCESS);
+		case 1:
+			timeAttackMenu();
+			input = getMainMenuInput();
+			break;
+		case 2:
+			passwordLengthMenu();
+			input = getMainMenuInput();
+			break;
+		case 0:
+			exit(EXIT_SUCCESS);
 		}
 	}
 }
 
 short getMainMenuInput(void) {
 	printf("\n1. Calculate Time Until Successful brute force attack\n2. "
-		   "Calculate Password Length\n0. Quit\n\n");
+		"Calculate Password Length\n0. Quit\n\n");
 	short input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);

@@ -38,20 +38,20 @@ void setTimeUnit(void) {
 		input = getAMenuInput(getTimeMenu());
 	}
 	switch (input) {
-		case 1:
-			timeUnit = "Days";
-			break;
-		case 2:
-			timeUnit = "Weeks";
-			break;
-		case 3:
-			timeUnit = "Months";
-			break;
-		case 4:
-			timeUnit = "Years";
-			break;
-		case 0:
-			break;
+	case 1:
+		timeUnit = "Days";
+		break;
+	case 2:
+		timeUnit = "Weeks";
+		break;
+	case 3:
+		timeUnit = "Months";
+		break;
+	case 4:
+		timeUnit = "Years";
+		break;
+	case 0:
+		break;
 	}
 }
 
@@ -91,20 +91,20 @@ void setNumberOfCharacters(void) {
 		input = getAMenuInput(getNumberOfCharactersMenu());
 	}
 	switch (input) {
-		case 1: // See top of file for details.
-			numberOfCharacters = 10; // Numeric
-			break;
-		case 2:
-			numberOfCharacters = 52; // Lower/Upper case
-			break;
-		case 3:
-			numberOfCharacters = 62; // Numeric + Lower/Upper case
-			break;
-		case 4:
-			numberOfCharacters = 95; // Numeric + Lower/Upper case + Symbols
-			break;
-		case 0:
-			break;
+	case 1: // See top of file for details.
+		numberOfCharacters = 10; // Numeric
+		break;
+	case 2:
+		numberOfCharacters = 52; // Lower/Upper case
+		break;
+	case 3:
+		numberOfCharacters = 62; // Numeric + Lower/Upper case
+		break;
+	case 4:
+		numberOfCharacters = 95; // Numeric + Lower/Upper case + Symbols
+		break;
+	case 0:
+		break;
 	}
 }
 
@@ -136,7 +136,7 @@ double calculateNumberOfPasswords(void) {
 char *getNumberOfCharactersMenu(void) {
 	char menu[112];
 	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
+		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
 }
 

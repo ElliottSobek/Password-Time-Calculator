@@ -36,29 +36,29 @@ void passwordLengthMenu(void) {
 			input = getAMenuInput(getPasswordLengthMenu());
 		}
 		switch (input) {
-			case 1:
+		case 1:
+			timeInput = getTimeInput();
+			while (timeInput < 0) {
+				purgeBuffer();
+				printf("\nTime must be positive.\n");
 				timeInput = getTimeInput();
-				while (timeInput < 0) {
-					purgeBuffer();
-					printf("\nTime must be positive.\n");
-					timeInput = getTimeInput();
-				}
-				result = calculatePasswordLength(timeInput);
-				printf("\nThis is the minimum password length for the time and "
-					   "attack rate given: %.1f (Rounded up)\n", ceil(result));
-				break;
-			case 2:
-				setNumberOfCharacters();
-				break;
-			case 3:
-				setTimeUnit();
-				break;
-			case 4:
-				setPasswordAttackRate();
-				break;
-			case 0:
-				backFlag = true;
-				break;
+			}
+			result = calculatePasswordLength(timeInput);
+			printf("\nThis is the minimum password length for the time and "
+				"attack rate given: %.1f (Rounded up)\n", ceil(result));
+			break;
+		case 2:
+			setNumberOfCharacters();
+			break;
+		case 3:
+			setTimeUnit();
+			break;
+		case 4:
+			setPasswordAttackRate();
+			break;
+		case 0:
+			backFlag = true;
+			break;
 		}
 	}
 }
@@ -66,8 +66,8 @@ void passwordLengthMenu(void) {
 char *getPasswordLengthMenu(void) {
 	char *menu = "";
 	sprintf(menu, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-			 " (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
-			 " second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
+		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
+		" second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
 
