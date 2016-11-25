@@ -25,7 +25,7 @@
 #include "pst.h"
 
 void passwordLengthMenu(void) {
-	short int input, timeInput
+	short int input, timeInput;
 	bool backFlag = false;
 	double result;
 	while (backFlag == false) {

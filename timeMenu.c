@@ -21,7 +21,7 @@
 
 void timeAttackMenu(void) {
 	short int input;
-	bool back = false;
+	bool backFlag = false;
 	double result;
 	while (backFlag == false) {
 		input = getAMenuInput(getTimeAttackMenu());
