@@ -13,11 +13,11 @@
 * GNU General Public License for more details.
 */
 
-#include <stdbool.h>
-
 /* Guard */
 #ifndef PST_H
 #define PST_H
+
+#include <stdbool.h>
 
 /* Macros */
 #define DAYS 86400
