@@ -21,7 +21,9 @@
   */
 
 #include <stdio.h>
+
 #include "pst.h"
+#include "mainMenu.h"
 
 void initialize(void) {
 	passwordAttackRate = 1000000000;

@@ -15,10 +15,33 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
 #include "pst.h"
 #include "shared.h"
+
+char *getTimeAttackMenu(void) {
+	char *menu = malloc(190 * sizeof(char));
+	checkMalloc(menu);
+	sprintf(menu, "\n1. Calculate Time\n2. Set Password Length (%hu)"
+		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
+		"\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
+		passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
+	return menu;
+}
+
+/* Return units: seconds */
+double calculatePasswordCrackTime(double numberOfPasswords) {
+	double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
+	if (strcmp(timeUnit, "Days") == 0)
+		return timeInSeconds / DAYS;
+	else if (strcmp(timeUnit, "Weeks") == 0)
+		return timeInSeconds / WEEKS;
+	else if (strcmp(timeUnit, "Months") == 0)
+		return timeInSeconds / MONTHS;
+	return timeInSeconds / YEARS;
+}
 
 void timeAttackMenu(void) {
 	short input;
@@ -53,26 +76,4 @@ void timeAttackMenu(void) {
 			break;
 		}
 	}
-}
-
-char *getTimeAttackMenu(void) {
-	char *menu = malloc(190 * sizeof(char));
-	checkMalloc(menu);
-	sprintf(menu, "\n1. Calculate Time\n2. Set Password Length (%hu)"
-		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
-		"\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
-		passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
-	return menu;
-}
-
-/* Return units: seconds */
-double calculatePasswordCrackTime(double numberOfPasswords) {
-	double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
-	if (strcmp(timeUnit, "Days") == 0)
-		return timeInSeconds / DAYS;
-	else if (strcmp(timeUnit, "Weeks") == 0)
-		return timeInSeconds / WEEKS;
-	else if (strcmp(timeUnit, "Months") == 0)
-		return timeInSeconds / MONTHS;
-	return timeInSeconds / YEARS;
 }

@@ -20,8 +20,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
 #include "pst.h"
 #include "shared.h"
+#include "mainMenu.h"
+#include "timeMenu.h"
+#include "lengthMenu.h"
+
+short getMainMenuInput(void) {
+	printf("\n1. Calculate Time Until Successful brute force attack\n2. "
+		"Calculate Password Length\n0. Quit\n\n");
+	short input;
+	printf("Enter a menu option: ");
+	scanf("%hi", &input);
+	return input;
+}
 
 void mainMenu(void) {
 	short input;
@@ -45,13 +58,4 @@ void mainMenu(void) {
 			exit(EXIT_SUCCESS);
 		}
 	}
-}
-
-short getMainMenuInput(void) {
-	printf("\n1. Calculate Time Until Successful brute force attack\n2. "
-		"Calculate Password Length\n0. Quit\n\n");
-	short input;
-	printf("Enter a menu option: ");
-	scanf("%hi", &input);
-	return input;
 }

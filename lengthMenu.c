@@ -22,8 +22,40 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+
 #include "pst.h"
 #include "shared.h"
+
+char *getPasswordLengthMenu(void) {
+	char *menu = malloc(170 * sizeof(char));
+	checkMalloc(menu);
+	snprintf(menu, 170, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
+		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
+		" second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
+	return menu;
+}
+
+short getTimeInput(void) {
+	short input;
+	printf("\nEnter an amount of time in %s: ", timeUnit);
+	scanf("%hi", &input);
+	return input;
+}
+
+double calculatePasswordLength(short time) {
+	unsigned short timeInSeconds;
+	if (strcmp(timeUnit, "Days") == 0)
+		timeInSeconds = time * DAYS;
+	else if (strcmp(timeUnit, "Weeks") == 0)
+		timeInSeconds = time * WEEKS;
+	else if (strcmp(timeUnit, "Months") == 0)
+		timeInSeconds = time * MONTHS;
+	else
+		timeInSeconds = time * YEARS;
+	double numberOfPasswords;
+	numberOfPasswords = timeInSeconds * passwordAttackRate;
+	return (double) (log(numberOfPasswords) / log(numberOfCharacters));
+}
 
 void passwordLengthMenu(void) {
 	short input, timeInput;
@@ -62,35 +94,4 @@ void passwordLengthMenu(void) {
 			break;
 		}
 	}
-}
-
-char *getPasswordLengthMenu(void) {
-	char *menu = malloc(170 * sizeof(char));
-	checkMalloc(menu);
-	snprintf(menu, 170, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
-		" second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
-	return menu;
-}
-
-short getTimeInput(void) {
-	short input;
-	printf("\nEnter an amount of time in %s: ", timeUnit);
-	scanf("%hi", &input);
-	return input;
-}
-
-double calculatePasswordLength(short int time) {
-	unsigned short timeInSeconds;
-	if (strcmp(timeUnit, "Days") == 0)
-		timeInSeconds = time * DAYS;
-	else if (strcmp(timeUnit, "Weeks") == 0)
-		timeInSeconds = time * WEEKS;
-	else if (strcmp(timeUnit, "Months") == 0)
-		timeInSeconds = time * MONTHS;
-	else
-		timeInSeconds = time * YEARS;
-	double numberOfPasswords;
-	numberOfPasswords = timeInSeconds * passwordAttackRate;
-	return (double) (log(numberOfPasswords) / log(numberOfCharacters));
 }
