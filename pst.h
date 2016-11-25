@@ -54,7 +54,6 @@ void setTimeUnit(void);
 void setPasswordLength(void);
 void setPasswordAttackRate(void);
 void setNumberOfCharacters(void);
-void waitFor(unsigned int);
 void checkMalloc(char *);
 char * getNumberOfCharactersMenu(void);
 char * getTimeMenu(void);
