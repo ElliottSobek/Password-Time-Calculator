@@ -66,12 +66,11 @@ char * getTimeAttackMenu(void) {
 /* Return units: seconds */
 double calculatePasswordCrackTime(double numberOfPasswords) {
 	double timeInSeconds = (double) numberOfPasswords / passwordAttackRate;
-	if (strcmp(timeUnit, "Days") == 0) {
+	if (strcmp(timeUnit, "Days") == 0)
 		return timeInSeconds / DAYS;
-	} else if (strcmp(timeUnit, "Weeks") == 0) {
+	else if (strcmp(timeUnit, "Weeks") == 0)
 		return timeInSeconds / WEEKS;
-	} else if (strcmp(timeUnit, "Months") == 0) {
+	else if (strcmp(timeUnit, "Months") == 0)
 		return timeInSeconds / MONTHS;
-	}
 	return timeInSeconds / YEARS;
 }

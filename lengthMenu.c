@@ -80,15 +80,14 @@ short int getTimeInput(void) {
 
 double calculatePasswordLength(short int time) {
 	unsigned short int timeInSeconds;
-	if (strcmp(timeUnit, "Days") == 0) {
+	if (strcmp(timeUnit, "Days") == 0)
 		timeInSeconds = time * DAYS;
-	} else if (strcmp(timeUnit, "Weeks") == 0) {
+	else if (strcmp(timeUnit, "Weeks") == 0)
 		timeInSeconds = time * WEEKS;
-	} else if (strcmp(timeUnit, "Months") == 0) {
+	else if (strcmp(timeUnit, "Months") == 0)
 		timeInSeconds = time * MONTHS;
-	} else {
+	else
 		timeInSeconds = time * YEARS;
-	}
 	double numberOfPasswords;
 	numberOfPasswords = timeInSeconds * passwordAttackRate;
 	return (double) log(numberOfPasswords) / log(numberOfCharacters);

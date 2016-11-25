@@ -63,9 +63,8 @@ void setPasswordLength(void) {
 		printf("\nEntered length not between 1 and 32 inclusive.\n");
 		length = getPasswordLengthInput();
 	}
-	if (length == 0) {
+	if (length == 0)
 		return;
-	}
 	passwordLength = length;
 }
 
@@ -78,9 +77,8 @@ void setPasswordAttackRate(void) {
 		printf("\nEntered attack rate not between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
 		scanf("%li", &attackRate);
 	}
-	if (attackRate == 0) {
+	if (attackRate == 0)
 		return;
-	}
 	passwordAttackRate = attackRate;
 }
 
@@ -111,9 +109,8 @@ void setNumberOfCharacters(void) {
 }
 
 bool isValidBounds(int input, short int lowerBound, int upperBound) {
-	if ((input < lowerBound) || (input > upperBound)) {
+	if ((input < lowerBound) || (input > upperBound))
 		return false;
-	}
 	return true;
 }
 
