@@ -33,10 +33,6 @@ char * timeUnit;
 
 // PROTOTYPES //
 
-/* PST prototypes */
-int main(void);
-void initialize(void);
-
 /* Main Menu prototypes */
 void mainMenu(void);
 short int getMainMenuInput(void);
