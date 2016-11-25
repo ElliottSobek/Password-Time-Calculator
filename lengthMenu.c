@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
- 
+
 #if _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 #endif
@@ -25,7 +25,8 @@
 #include "pst.h"
 
 void passwordLengthMenu(void) {
-	short int input, timeInput, backFlag = false;
+	short int input, timeInput
+	bool backFlag = false;
 	double result;
 	while (backFlag == false) {
 		input = getAMenuInput(getPasswordLengthMenu());
@@ -62,7 +63,7 @@ void passwordLengthMenu(void) {
 	}
 }
 
-char *  getPasswordLengthMenu(void) {
+char * getPasswordLengthMenu(void) {
 	char *  menu = malloc(170 * sizeof(char));
 	checkMalloc(menu);
 	snprintf(menu, 170, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"

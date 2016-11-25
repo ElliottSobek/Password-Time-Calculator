@@ -20,7 +20,8 @@
 #include "pst.h"
 
 void timeAttackMenu(void) {
-	short int input, backFlag = false;
+	short int input;
+	bool back = false;
 	double result;
 	while (backFlag == false) {
 		input = getAMenuInput(getTimeAttackMenu());
@@ -53,7 +54,7 @@ void timeAttackMenu(void) {
 	}
 }
 
-char *  getTimeAttackMenu(void) {
+char * getTimeAttackMenu(void) {
 	char *  menu = malloc(190 * sizeof(char));
 	checkMalloc(menu);
 	snprintf(menu, 190, "\n1. Calculate Time\n2. Set Password Length (%hu)"
