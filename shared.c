@@ -25,6 +25,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "pst.h"
+#include "shared.h"
 
 void purgeBuffer(void) {
 	fseek(stdin, 0, SEEK_END);

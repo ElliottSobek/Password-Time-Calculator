@@ -18,6 +18,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "pst.h"
+#include "shared.h"
 
 void timeAttackMenu(void) {
 	short input;

@@ -23,6 +23,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "pst.h"
+#include "shared.h"
 
 void passwordLengthMenu(void) {
 	short input, timeInput;

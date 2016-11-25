@@ -17,8 +17,6 @@
 #ifndef PST_H
 #define PST_H
 
-#include <stdbool.h>
-
 /* Macros */
 #define DAYS 86400
 #define WEEKS 604800
@@ -27,38 +25,8 @@
 
 /* Globals */
 unsigned int passwordAttackRate;
-unsigned short int passwordLength;
-unsigned short int numberOfCharacters;
-char * timeUnit;
+unsigned short passwordLength;
+unsigned short numberOfCharacters;
+char *timeUnit;
 
-// PROTOTYPES //
-
-/* Main Menu prototypes */
-void mainMenu(void);
-short int getMainMenuInput(void);
-
-/* Time Menu prototypes */
-void timeAttackMenu(void);
-char *  getTimeAttackMenu(void);
-double calculatePasswordCrackTime(double);
-
-/* Length Menu prototypes */
-void passwordLengthMenu(void);
-char *  getPasswordLengthMenu(void);
-short int getTimeInput(void);
-double calculatePasswordLength(short int);
-
-/* Support prototypes */
-void purgeBuffer(void);
-void setTimeUnit(void);
-void setPasswordLength(void);
-void setPasswordAttackRate(void);
-void setNumberOfCharacters(void);
-void checkMalloc(char *);
-char * getNumberOfCharactersMenu(void);
-char * getTimeMenu(void);
-bool isValidBounds(int, short int, int);
-short int getAMenuInput(char *);
-short int getPasswordLengthInput(void);
-double calculateNumberOfPasswords(void);
 #endif // !PST_H

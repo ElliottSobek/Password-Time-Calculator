@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "pst.h"
+#include "shared.h"
 
 void mainMenu(void) {
 	short input;
