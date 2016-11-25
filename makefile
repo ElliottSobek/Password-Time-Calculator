@@ -22,6 +22,7 @@ LDLIBS = -lm
 all: pst
 
 pst: pst.o mainMenu.o timeMenu.o lengthMenu.o shared.o
+	$(CC) $(CFLAGS) $^ $(LDLIBS) -o PST
 
 pst.o: pst.c
 
