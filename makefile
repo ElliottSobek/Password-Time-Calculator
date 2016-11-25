@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -Wall -std=c11
+CFLAGS = -Wall -Wextra -Wpedantic -O3 -std=c11
 
 all: pst
 
