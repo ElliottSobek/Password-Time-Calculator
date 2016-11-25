@@ -44,11 +44,11 @@ short getTimeInput(void) {
 
 double calculatePasswordLength(short time) {
 	unsigned short timeInSeconds;
-	if (strcmp(timeUnit, "Days") == 0)
+	if (strncmp(timeUnit, "Days", 5) == 0)
 		timeInSeconds = time * DAYS;
-	else if (strcmp(timeUnit, "Weeks") == 0)
+	else if (strncmp(timeUnit, "Weeks", 6) == 0)
 		timeInSeconds = time * WEEKS;
-	else if (strcmp(timeUnit, "Months") == 0)
+	else if (strncmp(timeUnit, "Months", 7) == 0)
 		timeInSeconds = time * MONTHS;
 	else
 		timeInSeconds = time * YEARS;

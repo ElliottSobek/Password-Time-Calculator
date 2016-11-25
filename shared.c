@@ -148,14 +148,14 @@ double calculateNumberOfPasswords(void) {
 char *getNumberOfCharactersMenu(void) {
 	char *menu = malloc(113 * sizeof(char));
 	checkMalloc(menu);
-	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
+	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
+		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n", 113);
 	return menu;
 }
 
 char *getTimeMenu(void) {
 	char *menu = malloc(48 * sizeof(char));
 	checkMalloc(menu);
-	strcpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
+	strncpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n", 48);
 	return menu;
 }
