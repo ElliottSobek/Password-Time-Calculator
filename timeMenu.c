@@ -55,11 +55,12 @@ void timeAttackMenu(void) {
 }
 
 char *getTimeAttackMenu(void) {
-	char *menu = "";
+	char *menu = malloc(190 * sizeof(char));
+	checkMalloc(menu);
 	sprintf(menu, "\n1. Calculate Time\n2. Set Password Length (%hu)"
-		 "\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
-		 "\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
-		 passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
+		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
+		"\n5. Set Password Attack Rate (%u) per second\n0. Back\n\n",
+		passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
 

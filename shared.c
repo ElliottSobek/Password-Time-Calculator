@@ -20,6 +20,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
@@ -108,6 +109,14 @@ void setNumberOfCharacters(void) {
 	}
 }
 
+void checkMalloc(char *charPointer) {
+	if (!charPointer) {
+		printf("\nError allocating memory.\n");
+		sleep(4);
+		exit(EXIT_FAILURE);
+	}
+}
+
 bool isValidBounds(int input, short lowerBound, int upperBound) {
 	if ((input < lowerBound) || (input > upperBound))
 		return false;
@@ -116,6 +125,7 @@ bool isValidBounds(int input, short lowerBound, int upperBound) {
 
 short getAMenuInput(char *message) {
 	printf("%s", message);
+	free(message);
 	short input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);
@@ -134,14 +144,16 @@ double calculateNumberOfPasswords(void) {
 }
 
 char *getNumberOfCharactersMenu(void) {
-	char menu[112];
+	char *menu = malloc(113 * sizeof(char));
+	checkMalloc(menu);
 	strcpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		"4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
+		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n");
 	return menu;
 }
 
 char *getTimeMenu(void) {
-	char menu[47];
+	char *menu = malloc(48 * sizeof(char));
+	checkMalloc(menu);
 	strcpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n");
 	return menu;
 }
