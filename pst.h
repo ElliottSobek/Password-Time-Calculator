@@ -22,6 +22,10 @@
 #define WEEKS 604800
 #define MONTHS 2678400 // 31 days
 #define YEARS 31536000 // 365 days
+#define DEFAULT_PASS_ATK_RATE 1000000000
+#define DEFAULT_PASS_LEN 8
+#define DEFAULT_CHARS_NUM 62
+#define DEFAULT_TIME_UNIT "Days"
 
 /* Globals */
 unsigned int passwordAttackRate;
