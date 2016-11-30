@@ -40,5 +40,5 @@ void initialize(void) {
 int main(void) {
     initialize();
     mainMenu();
-    return 1;
+    return 0;
 }

@@ -22,10 +22,10 @@
 #include "shared.h"
 
 char *getTimeAttackMenu(void) {
-	char *menu = malloc(190 * sizeof(char));
+	char *menu = malloc(TIME_ATK_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	snprintf(menu, 190, "\n1. Calculate Time\n2. Set Password Length (%hu)"
+	snprintf(menu, TIME_ATK_MENU_LEN, "\n1. Calculate Time\n2. Set Password Length (%hu)"
 		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
 		"\n5. Set Password Attack Rate (%u/s)\n0. Back\n\n",
 		passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);

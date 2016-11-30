@@ -94,17 +94,17 @@ void setNumberOfCharacters(void) {
 		input = getAMenuInput(getNumberOfCharactersMenu());
 	}
 	switch (input) {
-	case 1: // See top of file for details.
-		numberOfCharacters = 10; // Numeric
+	case 1:
+		numberOfCharacters = NUMERIC;
 		break;
 	case 2:
-		numberOfCharacters = 52; // Lower/Upper case
+		numberOfCharacters = LOWER_UPPER;
 		break;
 	case 3:
-		numberOfCharacters = 62; // Numeric + Lower/Upper case
+		numberOfCharacters = NUM_LOW_UPR;
 		break;
 	case 4:
-		numberOfCharacters = 95; // Numeric + Lower/Upper case + Symbols
+		numberOfCharacters = NUM_LOW_UPR_SYM;
 		break;
 	case 0:
 		break;
@@ -114,7 +114,7 @@ void setNumberOfCharacters(void) {
 void checkMalloc(char *charPointer) {
 	if (!charPointer) {
 		printf("\nError allocating memory.\n");
-		sleep(4);
+		sleep(4 * SECOND);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -146,18 +146,18 @@ double calculateNumberOfPasswords(void) {
 }
 
 char *getNumberOfCharactersMenu(void) {
-	char *menu = malloc(113 * sizeof(char));
+	char *menu = malloc(NUM_CHAR_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
 	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n", 113);
+		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n", NUM_CHAR_MENU_LEN);
 	return menu;
 }
 
 char *getTimeMenu(void) {
-	char *menu = malloc(48 * sizeof(char));
+	char *menu = malloc(TIME_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	strncpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n", 48);
+	strncpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n", TIME_MENU_LEN);
 	return menu;
 }
