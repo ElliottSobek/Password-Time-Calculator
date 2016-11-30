@@ -37,8 +37,8 @@ short getMainMenuInput(void) {
 }
 
 void mainMenu(void) {
-	short input;
-	input = getMainMenuInput();
+	short input = getMainMenuInput();
+
 	while (1) {
 		while (false == isValidBounds(input, 0, 2)) {
 			purgeBuffer();

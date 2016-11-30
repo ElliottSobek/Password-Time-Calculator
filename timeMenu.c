@@ -23,6 +23,7 @@
 
 char *getTimeAttackMenu(void) {
 	char *menu = malloc(190 * sizeof(char));
+
 	checkMalloc(menu);
 	snprintf(menu, 190, "\n1. Calculate Time\n2. Set Password Length (%hu)"
 		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
@@ -34,6 +35,7 @@ char *getTimeAttackMenu(void) {
 /* Return units: seconds */
 double calculatePasswordCrackTime(double numberOfPasswords) {
 	double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
+
 	if (strcmp(timeUnit, "Days") == 0)
 		return timeInSeconds / DAYS;
 	else if (strcmp(timeUnit, "Weeks") == 0)
@@ -45,9 +47,10 @@ double calculatePasswordCrackTime(double numberOfPasswords) {
 
 void timeAttackMenu(void) {
 	short input;
-	bool backFlag = false;
 	double result;
-	while (backFlag == false) {
+	bool backFlag = false;
+
+	while (false == backFlag) {
 		input = getAMenuInput(getTimeAttackMenu());
 		while (false == isValidBounds(input, 0, 5)) {
 			purgeBuffer();

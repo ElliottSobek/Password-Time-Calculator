@@ -33,8 +33,8 @@ void purgeBuffer(void) {
 }
 
 void setTimeUnit(void) {
-	short input;
-	input = getAMenuInput(getTimeMenu());
+	short input = getAMenuInput(getTimeMenu());
+
 	while (false == isValidBounds(input, 0, 4)) {
 		purgeBuffer();
 		printf("\nNot a menu option\n");
@@ -59,14 +59,14 @@ void setTimeUnit(void) {
 }
 
 void setPasswordLength(void) {
-	short length;
-	length = getPasswordLengthInput();
+	short length = getPasswordLengthInput();
+
 	while (false == isValidBounds(length, 0, 32)) {
 		purgeBuffer();
 		printf("\nEntered length not between 1 and 32 inclusive.\n");
 		length = getPasswordLengthInput();
 	}
-	if (length == 0)
+	if (0 == length)
 		return;
 	passwordLength = length;
 }
@@ -80,14 +80,14 @@ void setPasswordAttackRate(void) {
 		printf("\nEntered attack rate not between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
 		scanf("%li", &attackRate);
 	}
-	if (attackRate == 0)
+	if (0 == attackRate)
 		return;
 	passwordAttackRate = attackRate;
 }
 
 void setNumberOfCharacters(void) {
-	short input;
-	input = getAMenuInput(getNumberOfCharactersMenu());
+	short input = getAMenuInput(getNumberOfCharactersMenu());
+
 	while (false == isValidBounds(input, 0, 4)) {
 		purgeBuffer();
 		printf("\nNot a menu option\n");
@@ -147,6 +147,7 @@ double calculateNumberOfPasswords(void) {
 
 char *getNumberOfCharactersMenu(void) {
 	char *menu = malloc(113 * sizeof(char));
+
 	checkMalloc(menu);
 	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
 		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n", 113);
@@ -155,6 +156,7 @@ char *getNumberOfCharactersMenu(void) {
 
 char *getTimeMenu(void) {
 	char *menu = malloc(48 * sizeof(char));
+
 	checkMalloc(menu);
 	strncpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n", 48);
 	return menu;

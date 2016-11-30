@@ -28,6 +28,7 @@
 
 char *getPasswordLengthMenu(void) {
 	char *menu = malloc(170 * sizeof(char));
+
 	checkMalloc(menu);
 	snprintf(menu, 170, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
 		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u/s)"
@@ -52,17 +53,19 @@ double calculatePasswordLength(short time) {
 		timeInSeconds = time * MONTHS;
 	else
 		timeInSeconds = time * YEARS;
-	double numberOfPasswords;
-	numberOfPasswords = timeInSeconds * passwordAttackRate;
+	double numberOfPasswords = timeInSeconds * passwordAttackRate;
+
 	return (double) (log(numberOfPasswords) / log(numberOfCharacters));
 }
 
 void passwordLengthMenu(void) {
 	short input, timeInput;
-	bool backFlag = false;
 	double result;
-	while (backFlag == false) {
+	bool backFlag = false;
+
+	while (false == backFlag) {
 		input = getAMenuInput(getPasswordLengthMenu());
+
 		while (false == isValidBounds(input, 0, 4)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
@@ -71,7 +74,7 @@ void passwordLengthMenu(void) {
 		switch (input) {
 		case 1:
 			timeInput = getTimeInput();
-			while (timeInput < 0) {
+			while (0 > timeInput) {
 				purgeBuffer();
 				printf("\nTime must be positive.\n");
 				timeInput = getTimeInput();
