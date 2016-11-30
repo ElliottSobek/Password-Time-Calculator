@@ -20,6 +20,7 @@
 
 #include "pst.h"
 #include "shared.h"
+ #include "timeMenu.h"
 
 char *getTimeAttackMenu(void) {
 	char *menu = malloc(TIME_ATK_MENU_LEN * sizeof(char));

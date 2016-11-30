@@ -25,6 +25,7 @@
 
 #include "pst.h"
 #include "shared.h"
+#include "lengthMenu.h"
 
 char *getPasswordLengthMenu(void) {
 	char *menu = malloc(LEN_MENU_LEN * sizeof(char));

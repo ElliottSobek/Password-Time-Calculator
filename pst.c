@@ -13,12 +13,12 @@
  * GNU General Public License for more details.
  */
 
- /* Numeric: 0123456789
-  * Lower case: abcdefghijklmnopqrstuvwxyz
-  * Upper case: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-  * Symbols: `~!@#$%^&*()-_=+[]\{}|;':",./<>?
-  * 'Space' is the 33rd character after the ?
-  */
+/* Numeric: 0123456789
+ * Lower case: abcdefghijklmnopqrstuvwxyz
+ * Upper case: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ * Symbols: `~!@#$%^&*()-_=+[]\{}|;':",./<>?
+ * 'Space' is the 33rd character after the ?
+ */
 
 #include <stdio.h>
 
