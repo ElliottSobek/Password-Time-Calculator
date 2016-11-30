@@ -30,8 +30,8 @@ char *getPasswordLengthMenu(void) {
 	char *menu = malloc(170 * sizeof(char));
 	checkMalloc(menu);
 	snprintf(menu, 170, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u) per"
-		" second\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
+		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u/s)"
+		"\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
 
