@@ -26,10 +26,11 @@
 #include "mainMenu.h"
 
 void initialize(void) {
-	passwordAttackRate = 1000000000;
-	passwordLength = 8;
-	numberOfCharacters = 62;
-	timeUnit = "Days";
+	passwordAttackRate = DEFAULT_PASS_ATK_RATE;
+	passwordLength = DEFAULT_PASS_LEN;
+	numberOfCharacters = DEFAULT_CHARS_NUM;
+	timeUnit = DEFAULT_TIME_UNIT;
+
 	printf("Password Time Calculator Copyright (C) 2016 Author: Elliott Sobek.\n"
 		   "This program comes with ABSOLUTELY NO WARRANTY.\nThis is free "
 		   "software, and you are welcome to redistribute it under certain "
