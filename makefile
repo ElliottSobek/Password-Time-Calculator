@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Wpedantic -O3 -std=c11
 
 LDLIBS = -lm
 
-.PHONY: all clean
+.PHONY: all clean memCheck
 
 all: pst
 
@@ -36,3 +36,6 @@ shared.o: shared.c
 
 clean:
 	rm *.o
+
+memCheck:
+	valgrind --leak-check=full -v ./PST
