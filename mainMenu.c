@@ -40,7 +40,7 @@ void mainMenu(void) {
 	short input = getMainMenuInput();
 
 	while (1) {
-		while (false == isValidBounds(input, 0, 2)) {
+		while (!isValidBounds(input, 0, 2)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
 			input = getMainMenuInput();

@@ -50,9 +50,9 @@ void timeAttackMenu(void) {
 	double result;
 	bool backFlag = false;
 
-	while (false == backFlag) {
+	while (!backFlag) {
 		input = getAMenuInput(getTimeAttackMenu());
-		while (false == isValidBounds(input, 0, 5)) {
+		while (!isValidBounds(input, 0, 5)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
 			input = getAMenuInput(getTimeAttackMenu());

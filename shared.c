@@ -35,7 +35,7 @@ void purgeBuffer(void) {
 void setTimeUnit(void) {
 	short input = getAMenuInput(getTimeMenu());
 
-	while (false == isValidBounds(input, 0, 4)) {
+	while (!isValidBounds(input, 0, 4)) {
 		purgeBuffer();
 		printf("\nNot a menu option\n");
 		input = getAMenuInput(getTimeMenu());
@@ -61,7 +61,7 @@ void setTimeUnit(void) {
 void setPasswordLength(void) {
 	short length = getPasswordLengthInput();
 
-	while (false == isValidBounds(length, 0, 32)) {
+	while (!isValidBounds(length, 0, 32)) {
 		purgeBuffer();
 		printf("\nEntered length not between 1 and 32 inclusive.\n");
 		length = getPasswordLengthInput();
@@ -75,7 +75,7 @@ void setPasswordAttackRate(void) {
 	long attackRate;
 	printf("\nEnter an attack rate between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
 	scanf("%li", &attackRate);
-	while (false == isValidBounds(attackRate, 0, 1000000000)) {
+	while (!isValidBounds(attackRate, 0, 1000000000)) {
 		purgeBuffer();
 		printf("\nEntered attack rate not between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
 		scanf("%li", &attackRate);
@@ -88,7 +88,7 @@ void setPasswordAttackRate(void) {
 void setNumberOfCharacters(void) {
 	short input = getAMenuInput(getNumberOfCharactersMenu());
 
-	while (false == isValidBounds(input, 0, 4)) {
+	while (!isValidBounds(input, 0, 4)) {
 		purgeBuffer();
 		printf("\nNot a menu option\n");
 		input = getAMenuInput(getNumberOfCharactersMenu());

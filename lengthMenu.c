@@ -63,10 +63,10 @@ void passwordLengthMenu(void) {
 	double result;
 	bool backFlag = false;
 
-	while (false == backFlag) {
+	while (!backFlag) {
 		input = getAMenuInput(getPasswordLengthMenu());
 
-		while (false == isValidBounds(input, 0, 4)) {
+		while (!isValidBounds(input, 0, 4)) {
 			purgeBuffer();
 			printf("\nNot a menu option\n");
 			input = getAMenuInput(getPasswordLengthMenu());
