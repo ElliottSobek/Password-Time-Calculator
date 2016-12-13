@@ -26,7 +26,16 @@
 #include <stdbool.h>
 
 #include "pst.h"
-#include "shared.h"
+
+#define SECOND 1
+
+#define NUMERIC         10
+#define LOWER_UPPER     52
+#define NUM_LOW_UPR     62
+#define NUM_LOW_UPR_SYM 95
+
+#define TIME_MENU_LEN      48
+#define NUM_CHAR_MENU_LEN 133
 
 void purgeBuffer(void) {
 	fseek(stdin, 0, SEEK_END);
@@ -73,11 +82,13 @@ void setPasswordLength(void) {
 
 void setPasswordAttackRate(void) {
 	long attackRate;
-	printf("\nEnter an attack rate between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
+	printf("\nEnter an attack rate between 1 and 1,000,000,000 inclusive "
+		"(passwords/second). 0 to go back: ");
 	scanf("%li", &attackRate);
 	while (!isValidBounds(attackRate, 0, 1000000000)) {
 		purgeBuffer();
-		printf("\nEntered attack rate not between 1 and 1,000,000,000 inclusive (passwords/second). 0 to go back: ");
+		printf("\nEntered attack rate not between 1 and 1,000,000,000 "
+			"inclusive (passwords/second). 0 to go back: ");
 		scanf("%li", &attackRate);
 	}
 	if (0 == attackRate)
@@ -149,8 +160,10 @@ char *getNumberOfCharactersMenu(void) {
 	char *menu = malloc(NUM_CHAR_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n3. Numeric + Lower/Upper Case\n"
-		   "4. Numeric + Lower/Upper Case + Symbols\n0. Back\n\n", NUM_CHAR_MENU_LEN);
+	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case"
+		"\n3. Numeric + Lower/Upper Case"
+		"\n4. Numeric + Lower/Upper Case + Symbols\n0. Back"
+		"\n\n", NUM_CHAR_MENU_LEN);
 	return menu;
 }
 

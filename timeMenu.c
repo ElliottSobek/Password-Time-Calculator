@@ -20,13 +20,15 @@
 
 #include "pst.h"
 #include "shared.h"
- #include "timeMenu.h"
+
+#define TIME_ATK_MENU_LEN 190
 
 char *getTimeAttackMenu(void) {
 	char *menu = malloc(TIME_ATK_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	snprintf(menu, TIME_ATK_MENU_LEN, "\n1. Calculate Time\n2. Set Password Length (%hu)"
+	snprintf(menu, TIME_ATK_MENU_LEN, "\n1. Calculate Time"
+		"\n2. Set Password Length (%hu)"
 		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
 		"\n5. Set Password Attack Rate (%u/s)\n0. Back\n\n",
 		passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
@@ -37,11 +39,11 @@ char *getTimeAttackMenu(void) {
 double calculatePasswordCrackTime(double numberOfPasswords) {
 	double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
 
-	if (strcmp(timeUnit, "Days") == 0)
+	if (strncmp(timeUnit, "Days", 4) == 0)
 		return timeInSeconds / DAYS;
-	else if (strcmp(timeUnit, "Weeks") == 0)
+	else if (strncmp(timeUnit, "Weeks", 5) == 0)
 		return timeInSeconds / WEEKS;
-	else if (strcmp(timeUnit, "Months") == 0)
+	else if (strncmp(timeUnit, "Months", 6) == 0)
 		return timeInSeconds / MONTHS;
 	return timeInSeconds / YEARS;
 }

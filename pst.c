@@ -25,6 +25,11 @@
 #include "pst.h"
 #include "mainMenu.h"
 
+#define DEFAULT_PASS_ATK_RATE 1000000000
+#define DEFAULT_PASS_LEN 8
+#define DEFAULT_CHARS_NUM 62
+#define DEFAULT_TIME_UNIT "Days"
+
 void initialize(void) {
 	passwordAttackRate = DEFAULT_PASS_ATK_RATE;
 	passwordLength = DEFAULT_PASS_LEN;

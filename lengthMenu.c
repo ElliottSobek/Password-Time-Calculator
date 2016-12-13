@@ -20,19 +20,21 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "pst.h"
 #include "shared.h"
-#include "lengthMenu.h"
+
+#define LEN_MENU_LEN 170
 
 char *getPasswordLengthMenu(void) {
 	char *menu = malloc(LEN_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	snprintf(menu, LEN_MENU_LEN, "\n1. Calculate Password Length\n2. Set Amount of Password Characters"
-		" (%hu)\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u/s)"
+	snprintf(menu, LEN_MENU_LEN, "\n1. Calculate Password Length"
+		"\n2. Set Amount of Password Characters (%hu)"
+		"\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u/s)"
 		"\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
