@@ -16,8 +16,6 @@
 #ifndef TIMEMENU_H
 #define TIMEMENU_H
 
-#define TIME_ATK_MENU_LEN 190
-
 void timeAttackMenu(void);
 
 #endif /* End TIMEMENU_H */

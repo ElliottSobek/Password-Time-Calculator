@@ -16,8 +16,6 @@
 #ifndef LENGTHMENU_H
 #define LENGTHMENU_H
 
-#define LEN_MENU_LEN 170
-
 void passwordLengthMenu(void);
 
 #endif /* End LENGTHMENU_H */

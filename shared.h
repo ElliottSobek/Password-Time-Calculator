@@ -18,16 +18,6 @@
 
 #include <stdbool.h>
 
-#define SECOND 1
-
-#define NUMERIC         10
-#define LOWER_UPPER     52
-#define NUM_LOW_UPR     62
-#define NUM_LOW_UPR_SYM 95
-
-#define TIME_MENU_LEN      48
-#define NUM_CHAR_MENU_LEN 133
-
 void purgeBuffer(void);
 void setTimeUnit(void);
 void setPasswordLength(void);
