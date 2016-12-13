@@ -21,9 +21,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "pst.h"
 #include "shared.h"
-#include "mainMenu.h"
 #include "timeMenu.h"
 #include "lengthMenu.h"
 
