@@ -50,7 +50,7 @@ void checkMalloc(char *charPointer) {
 }
 
 char *getNumberOfCharactersMenu(void) {
-	char *menu = malloc(NUM_CHAR_MENU_LEN * sizeof(char));
+	char *menu = (char*) malloc(NUM_CHAR_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
 	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case"
@@ -97,7 +97,7 @@ short getAMenuInput(char *message) {
 }
 
 char *getTimeMenu(void) {
-	char *menu = malloc(TIME_MENU_LEN * sizeof(char));
+	char *menu = (char*) malloc(TIME_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
 	strncpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n"

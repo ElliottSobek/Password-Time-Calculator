@@ -29,7 +29,7 @@
 #define LEN_MENU_LEN 170
 
 char *getPasswordLengthMenu(void) {
-	char *menu = malloc(LEN_MENU_LEN * sizeof(char));
+	char *menu = (char*) malloc(LEN_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
 	snprintf(menu, LEN_MENU_LEN, "\n1. Calculate Password Length"

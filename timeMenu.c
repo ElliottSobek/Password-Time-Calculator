@@ -24,7 +24,7 @@
 #define TIME_ATK_MENU_LEN 190
 
 char *getTimeAttackMenu(void) {
-	char *menu = malloc(TIME_ATK_MENU_LEN * sizeof(char));
+	char *menu = (char*) malloc(TIME_ATK_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
 	snprintf(menu, TIME_ATK_MENU_LEN, "\n1. Calculate Time"
