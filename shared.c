@@ -89,6 +89,7 @@ void setPasswordLength(void) {
 short getAMenuInput(char *message) {
 	printf("%s", message);
 	free(message);
+	message = NULL;
 	short input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);
