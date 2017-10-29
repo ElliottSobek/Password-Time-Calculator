@@ -13,7 +13,7 @@
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Wpedantic -O3 -std=c11
+CFLAGS = -Wall -Wextra -Wpedantic -O3 -std=c11 -Wno-unused-result
 
 LDLIBS = -lm
 
