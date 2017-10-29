@@ -67,7 +67,7 @@ short getPasswordLengthInput(void) {
 	return input;
 }
 
-bool isValidBounds(int input, short lowerBound, int upperBound) {
+bool isValidBounds(long input, short lowerBound, long upperBound) {
 	if ((input < lowerBound) || (input > upperBound))
 		return false;
 	return true;
