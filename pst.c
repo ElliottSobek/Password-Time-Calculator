@@ -21,13 +21,15 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "pst.h"
 #include "mainMenu.h"
 
-#define DEFAULT_PASS_ATK_RATE 1000000000
 #define DEFAULT_PASS_LEN 8
 #define DEFAULT_CHARS_NUM 62
+#define DEFAULT_PASS_ATK_RATE 1000000000
+
 #define DEFAULT_TIME_UNIT "Days"
 
 void initialize(void) {
@@ -37,13 +39,13 @@ void initialize(void) {
 	timeUnit = DEFAULT_TIME_UNIT;
 
 	printf("Password Time Calculator Copyright (C) 2016 Author: Elliott Sobek.\n"
-		   "This program comes with ABSOLUTELY NO WARRANTY.\nThis is free "
-		   "software, and you are welcome to redistribute it under certain "
-		   "conditions.\n");
+		   "This program comes with ABSOLUTELY NO WARRANTY.\n"
+		   "This is free software, and you are welcome to redistribute it under"
+		   " certain conditions.\n");
 }
 
 int main(void) {
     initialize();
     mainMenu();
-    return 1;
+    return EXIT_SUCCESS;
 }
