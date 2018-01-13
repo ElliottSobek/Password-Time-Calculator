@@ -24,9 +24,9 @@
 #define YEARS 31536000 // 365 days
 
 /* Globals */
+char *timeUnit;
 unsigned int passwordAttackRate;
 unsigned short passwordLength;
 unsigned short numberOfCharacters;
-char *timeUnit;
 
 #endif /* End PST_H */
