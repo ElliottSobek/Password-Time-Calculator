@@ -26,7 +26,7 @@ void setNumberOfCharacters(void);
 void checkMalloc(char*);
 char *getNumberOfCharactersMenu(void);
 char *getTimeMenu(void);
-bool isValidBounds(int, short int, int);
+bool isValidBounds(int, short, int);
 short getAMenuInput(char*);
 short getPasswordLengthInput(void);
 double calculateNumberOfPasswords(void);
