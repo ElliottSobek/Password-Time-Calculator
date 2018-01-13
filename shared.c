@@ -41,7 +41,7 @@ void purgeBuffer(void) {
 	fseek(stdin, 0, SEEK_END);
 }
 
-void checkMalloc(char *charPointer) {
+void checkMalloc(const char *const charPointer) {
 	if (!charPointer) {
 		printf("\nError allocating memory.\n");
 		sleep(4 * SECOND);
@@ -50,13 +50,13 @@ void checkMalloc(char *charPointer) {
 }
 
 char *getNumberOfCharactersMenu(void) {
-	char *menu = (char*) malloc(NUM_CHAR_MENU_LEN * sizeof(char));
+	char *const menu = (char*) malloc(NUM_CHAR_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case"
-		"\n3. Numeric + Lower/Upper Case"
-		"\n4. Numeric + Lower/Upper Case + Symbols\n0. Back"
-		"\n\n", NUM_CHAR_MENU_LEN);
+	strncpy(menu, "\n1. Numeric\n2. Lower/Upper Case\n"
+			"3. Numeric + Lower/Upper Case\n"
+			"4. Numeric + Lower/Upper Case + Symbols\n"
+			"0. Back\n\n", NUM_CHAR_MENU_LEN);
 	return menu;
 }
 
@@ -67,7 +67,7 @@ short getPasswordLengthInput(void) {
 	return input;
 }
 
-bool isValidBounds(long input, short lowerBound, long upperBound) {
+bool isValidBounds(const long input, const short lowerBound, const long upperBound) {
 	if ((input < lowerBound) || (input > upperBound))
 		return false;
 	return true;
@@ -97,11 +97,14 @@ short getAMenuInput(char *message) {
 }
 
 char *getTimeMenu(void) {
-	char *menu = (char*) malloc(TIME_MENU_LEN * sizeof(char));
+	char *const menu = (char*) malloc(TIME_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	strncpy(menu, "\n1. Days\n2. Weeks\n3. Months\n4. Years\n0. Back\n\n"
-		, TIME_MENU_LEN);
+	strncpy(menu, "\n1. Days\n"
+			"2. Weeks\n"
+			"3. Months\n"
+			"4. Years\n"
+			"0. Back\n\n", TIME_MENU_LEN);
 	return menu;
 }
 
@@ -134,12 +137,12 @@ void setTimeUnit(void) {
 void setPasswordAttackRate(void) {
 	long attackRate;
 	printf("\nEnter an attack rate between 1 and 1,000,000,000 inclusive "
-		"(passwords/second). 0 to go back: ");
+		   "(passwords/second). 0 to go back: ");
 	scanf("%li", &attackRate);
 	while (!isValidBounds(attackRate, 0, 1000000000)) {
 		purgeBuffer();
 		printf("\nEntered attack rate not between 1 and 1,000,000,000 "
-			"inclusive (passwords/second). 0 to go back: ");
+			   "inclusive (passwords/second). 0 to go back: ");
 		scanf("%li", &attackRate);
 	}
 	if (0 == attackRate)
