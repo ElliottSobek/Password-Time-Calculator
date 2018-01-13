@@ -25,9 +25,10 @@
 #include "timeMenu.h"
 #include "lengthMenu.h"
 
-short getMainMenuInput(void) {
-	printf("\n1. Calculate Time Until Successful brute force attack\n2. "
-		"Calculate Password Length\n0. Quit\n\n");
+static short getMainMenuInput(void) {
+	printf("\n1. Calculate Time Until Successful brute force attack\n"
+		   "2. Calculate Password Length\n"
+		   "0. Quit\n\n");
 	short input;
 	printf("Enter a menu option: ");
 	scanf("%hi", &input);
