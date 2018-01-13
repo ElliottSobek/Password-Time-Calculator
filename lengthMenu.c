@@ -28,25 +28,25 @@
 
 #define LEN_MENU_LEN 170
 
-char *getPasswordLengthMenu(void) {
-	char *menu = (char*) malloc(LEN_MENU_LEN * sizeof(char));
+static char *getPasswordLengthMenu(void) {
+	char *const menu = (char*) malloc(LEN_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	snprintf(menu, LEN_MENU_LEN, "\n1. Calculate Password Length"
-		"\n2. Set Amount of Password Characters (%hu)"
-		"\n3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u/s)"
-		"\n0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
+	snprintf(menu, LEN_MENU_LEN, "\n1. Calculate Password Length\n"
+			"2. Set Amount of Password Characters (%hu)\n"
+			"3. Set Time Unit (%s)\n4. Set Password Attack Rate (%u/s)\n"
+			"0. Back\n\n", numberOfCharacters, timeUnit, passwordAttackRate);
 	return menu;
 }
 
-short getTimeInput(void) {
+static short getTimeInput(void) {
 	short input;
 	printf("\nEnter an amount of time in %s: ", timeUnit);
 	scanf("%hi", &input);
 	return input;
 }
 
-double calculatePasswordLength(short time) {
+static double calculatePasswordLength(const short time) {
 	unsigned short timeInSeconds;
 	if (strncmp(timeUnit, "Days", 5) == 0)
 		timeInSeconds = time * DAYS;
@@ -56,7 +56,7 @@ double calculatePasswordLength(short time) {
 		timeInSeconds = time * MONTHS;
 	else
 		timeInSeconds = time * YEARS;
-	double numberOfPasswords = timeInSeconds * passwordAttackRate;
+	const double numberOfPasswords = timeInSeconds * passwordAttackRate;
 
 	return (double) (log(numberOfPasswords) / log(numberOfCharacters));
 }
