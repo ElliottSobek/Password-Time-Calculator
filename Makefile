@@ -35,7 +35,7 @@ lengthMenu.o: lengthMenu.c
 shared.o: shared.c
 
 clean:
-	rm *.o
+	$(RM) *.o
 
 memCheck:
 	valgrind --leak-check=full -v ./PST
