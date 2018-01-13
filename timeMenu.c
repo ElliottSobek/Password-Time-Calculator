@@ -23,21 +23,23 @@
 
 #define TIME_ATK_MENU_LEN 190
 
-char *getTimeAttackMenu(void) {
-	char *menu = (char*) malloc(TIME_ATK_MENU_LEN * sizeof(char));
+static char *getTimeAttackMenu(void) {
+	char *const menu = (char*) malloc(TIME_ATK_MENU_LEN * sizeof(char));
 
 	checkMalloc(menu);
-	snprintf(menu, TIME_ATK_MENU_LEN, "\n1. Calculate Time"
-		"\n2. Set Password Length (%hu)"
-		"\n3. Set Amount of Password Characters (%hu)\n4. Set Result Unit (%s)"
-		"\n5. Set Password Attack Rate (%u/s)\n0. Back\n\n",
-		passwordLength, numberOfCharacters, timeUnit, passwordAttackRate);
+	snprintf(menu, TIME_ATK_MENU_LEN, "\n1. Calculate Time\n"
+			 "2. Set Password Length (%hu)\n"
+			 "3. Set Amount of Password Characters (%hu)\n"
+			 "4. Set Result Unit (%s)\n"
+			 "5. Set Password Attack Rate (%u/s)\n"
+			 "0. Back\n\n", passwordLength, numberOfCharacters, timeUnit,
+			 				passwordAttackRate);
 	return menu;
 }
 
 /* Return units: seconds */
-double calculatePasswordCrackTime(double numberOfPasswords) {
-	double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
+static double calculatePasswordCrackTime(const double numberOfPasswords) {
+	const double timeInSeconds = (double) (numberOfPasswords / passwordAttackRate);
 
 	if (strncmp(timeUnit, "Days", 4) == 0)
 		return timeInSeconds / DAYS;
