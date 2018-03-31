@@ -1,3 +1,5 @@
+[![Generic badge](https://img.shields.io/badge/development%20status-development%20complete-green.svg "Development Status")](https://shields.io/)
+
 # Password Time Calculator (PST)
 
 ## About
